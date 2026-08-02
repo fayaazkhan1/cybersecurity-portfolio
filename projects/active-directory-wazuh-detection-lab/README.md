@@ -24,7 +24,7 @@ The project was performed only in a private lab using systems and accounts that 
 
 ## Lab Architecture
 
-![Lab architecture](architecture/lab-architecture.svg)
+![Active Directory password spray detection lab architecture](architecture/lab-architecture.png)
 
 | System | IP address | Role |
 |---|---:|---|
