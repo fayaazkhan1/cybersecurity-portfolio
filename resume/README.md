@@ -4,7 +4,7 @@ I am an entry-level cybersecurity professional pursuing opportunities in securit
 
 ## View Resume
 
-[![View Resume](https://img.shields.io/badge/View_Resume-PDF-D32F2F?style=for-the-badge&logo=adobeacrobatreader&logoColor=white)](Fayaaz_Khan_SOC_Analyst_Resume.pdf)
+[![View Resume](https://img.shields.io/badge/View_Resume-PDF-D32F2F?style=for-the-badge&logo=adobeacrobatreader&logoColor=white)](Fayaaz_Yasin_Khan_SOC_Analyst_Resume.pdf)
 
 **Direct link:**  
 [Fayaaz Khan — SOC Analyst Resume](Fayaaz_Yasin_Khan_SOC_Analyst_Resume.pdf)
