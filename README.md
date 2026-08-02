@@ -13,7 +13,7 @@ Houston, Texas · Open to local, hybrid, and remote opportunities
       alt="Email Fayaaz Khan"
     />
   </a>
-  <a href="resume/Fayaaz_Yasin_Khan_SOC_Analyst_Resume.pdf">
+  <a href="resume/Fayaaz_Yasin_Khan_SOC_Analyst_Resume.docx.pdf">
     <img
       src="https://img.shields.io/badge/Resume-View_PDF-D32F2F?style=for-the-badge&logo=adobeacrobatreader&logoColor=white"
       alt="View Fayaaz Khan's resume"
