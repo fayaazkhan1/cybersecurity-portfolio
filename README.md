@@ -60,10 +60,10 @@ I hold the **Google Cybersecurity Professional Certificate** and am currently pr
 
 | Project | Focus | Evidence |
 |---|---|---|
-| [Active Directory Password Spray Detection & Investigation Lab](projects/active-directory-wazuh-detection-lab/) | Active Directory, Windows Event ID 4625, Wazuh, detection engineering, alert investigation | [Custom rule](projects/active-directory-wazuh-detection-lab/detections/password-spray-rule.xml) · [Investigation report](projects/active-directory-wazuh-detection-lab/reports/password-spray-investigation.md) · [Test script](projects/active-directory-wazuh-detection-lab/scripts/lab-auth-test.sh) |
-| [SOC Labs and Investigations](soc-labs/) | Additional hands-on SOC exercises, investigation notes, and security-analysis practice | [View SOC labs](soc-labs/) |
+| [Active Directory Password Spray Detection & Investigation Lab](projects/active-directory-wazuh-detection-lab/) | Active Directory, Windows Event ID 4625, Wazuh, detection engineering, and alert investigation | [Custom rule](projects/active-directory-wazuh-detection-lab/detections/password-spray-rule.xml) · [Investigation report](projects/active-directory-wazuh-detection-lab/reports/password-spray-investigation.md) |
+| [SOC Labs and Investigations](soc-labs/) | Additional hands-on SOC exercises, investigation notes, and security-analysis practice | [Explore SOC labs](soc-labs/) |
 | [Google Cybersecurity Certificate Work](google-cert/) | Security foundations, Linux, SQL, SIEM concepts, incident response, and Python | [View certificate work](google-cert/) |
-| [Resume](resume/) | Current professional résumé and career information | [View résumé folder](resume/) |
+| [Resume](resume/Fayaaz_Khan_SOC_Analyst_Resume.pdf) | SOC-focused résumé covering projects, technical skills, education, and professional experience | [View PDF](resume/Fayaaz_Khan_SOC_Analyst_Resume.pdf) |
 
 ---
 
