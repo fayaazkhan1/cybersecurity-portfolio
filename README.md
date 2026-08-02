@@ -6,10 +6,32 @@
 
 Houston, Texas · Open to local, hybrid, and remote opportunities
 
-[![Email](https://img.shields.io/badge/Email-fayaazkhan1%40gmail.com-D14836?style=flat-square&logo=gmail&logoColor=white)](mailto:fayaazkhan1@gmail.com)
-[![Featured Project](https://img.shields.io/badge/Featured_Project-Active_Directory_Lab-005571?style=flat-square&logo=github&logoColor=white)](projects/active-directory-wazuh-detection-lab/)
-[![SOC Labs](https://img.shields.io/badge/View-SOC_Labs-1f6feb?style=flat-square&logo=github&logoColor=white)](soc-labs/)
-[![Certificate](https://img.shields.io/badge/Google-Cybersecurity_Certificate-4285F4?style=flat-square&logo=google&logoColor=white)](google-cert/)
+<p align="center">
+  <a href="mailto:fayaazkhan1@gmail.com">
+    <img
+      src="https://img.shields.io/badge/Email-Contact_Me-D14836?style=for-the-badge&logo=gmail&logoColor=white"
+      alt="Email Fayaaz Khan"
+    />
+  </a>
+  <a href="resume/Fayaaz_Khan_SOC_Analyst_Resume.pdf">
+    <img
+      src="https://img.shields.io/badge/Resume-View_PDF-D32F2F?style=for-the-badge&logo=adobeacrobatreader&logoColor=white"
+      alt="View Fayaaz Khan's resume"
+    />
+  </a>
+  <a href="projects/active-directory-wazuh-detection-lab/">
+    <img
+      src="https://img.shields.io/badge/Featured_Project-View_Lab-005571?style=for-the-badge&logo=github&logoColor=white"
+      alt="View featured cybersecurity project"
+    />
+  </a>
+  <a href="soc-labs/">
+    <img
+      src="https://img.shields.io/badge/SOC_Labs-Explore-1F6FEB?style=for-the-badge&logo=github&logoColor=white"
+      alt="View SOC labs"
+    />
+  </a>
+</p>
 
 </div>
 
