@@ -1,0 +1,55 @@
+{
+  "case_id": "CASE-001",
+  "score": 100,
+  "maximum_score": 100,
+  "triage_priority": "CRITICAL",
+  "scoring_breakdown": [
+    {
+      "indicator": "lookalike_sender_domain",
+      "present": true,
+      "possible_points": 20,
+      "awarded_points": 20
+    },
+    {
+      "indicator": "sender_url_domain_mismatch",
+      "present": true,
+      "possible_points": 15,
+      "awarded_points": 15
+    },
+    {
+      "indicator": "account_restriction_language",
+      "present": true,
+      "possible_points": 10,
+      "awarded_points": 10
+    },
+    {
+      "indicator": "urgency_language",
+      "present": true,
+      "possible_points": 10,
+      "awarded_points": 10
+    },
+    {
+      "indicator": "account_verification_request",
+      "present": true,
+      "possible_points": 15,
+      "awarded_points": 15
+    },
+    {
+      "indicator": "virustotal_malicious_detection",
+      "present": true,
+      "possible_points": 20,
+      "awarded_points": 20
+    },
+    {
+      "indicator": "virustotal_suspicious_detection",
+      "present": true,
+      "possible_points": 10,
+      "awarded_points": 10
+    }
+  ],
+  "virustotal_context": {
+    "malicious": 3,
+    "suspicious": 1
+  },
+  "methodology": "Lab-developed rule-based phishing triage heuristic. The score supports prioritization and does not replace analyst judgment."
+}

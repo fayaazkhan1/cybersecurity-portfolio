@@ -1,0 +1,51 @@
+{
+  "case_id": "CASE-001",
+  "source": {
+    "dataset": "Nazario phishing corpus",
+    "record_id": 27,
+    "dataset_label": "1"
+  },
+  "email_metadata": {
+    "date": "Tue, 17 Nov 2015 22:02:47 -0200",
+    "sender_masked": "U***@uusaa[.]com",
+    "receiver_masked": "U***@uusaa[.]com",
+    "subject": "Your USAA Account Personal Information Update"
+  },
+  "observed_indicators": {
+    "url_count": 1,
+    "urls_defanged": [
+      "hxxps://www[.]usaa[.]com"
+    ]
+  },
+  "body_length": 2879,
+  "body_sanitized": "To ensure delivery to your inbox, please add  U***@customermail[.]usaa[.]com to your address book.\t  \t        \t     \t      \t      Account Verification Notice\t       View Accounts |  Privacy Promise |  Contact Us\t    \t          \t  \t     \t  \t     \t  \t    \t       USAA SECURITY ZONE   ONLINE    MEMBER    USAA # ending in: XXXX\t    \t      \t     \t     \t    \t    \t     \t    \t          Dear Customer, For security reasons your online account has been temporarily restricted for verification, we are verifying and confirming our customers emails on our database to make sure their account has not been compromised and that they are still getting messages from usaa in order to prevent fraud and identity theft. Login here hxxps://www[.]usaa[.]com to complete your verification  Note: Please login your account with Mozilla Firefox Browser within 24 hours to update your account so its not permanently restricted. Thank you,  USAA   \t  \t         \t    \t  \t  \t     \t  \t  \t  \t     \t      Please do not reply to this e-mail. To send a secure message to USAA, please  contact us.     Privacy Promise  USAA, 9800 Fredericksburg Road, San Antonio, Texas 78288   \t     \t     \t   USAA means United Services Automobile Association and its insurance, banking, investment and other companies. Banks Member FDIC. Investments provided by USAA Investment Management Company and USAA Financial Advisors Inc., both registered broker dealers.\t  \t     \t      67624-1212      \t    To      ensure delivery to your inbox, please add  U***@customermail[.]usaa[.]com to your address book.     Account Verification Notice             View Accounts |                          Privacy Promise |                          Contact Us USAA SECURITY ZONE  ONLINE                 MEMBER                  USAA # ending in: XXXX           Dear Customer,         For security reasons your online account has been temporarily restricted for verification, we are  verifying and confirming our customers emails on our database to make sure their account has not been compromised and that they are still getting messages from usaa in  order to prevent fraud and identity theft. Login here hxxps://www[.]usaa[.]com to  complete your verification Note: Please login your account with Mozilla Firefox Browser within 24 hours to update your account so its not permanently restricted. Thank you,         USAA                                  Please do not reply to this e-mail. To send a secure message to USAA, please          contact us.     Privacy Promise     USAA, 9800 Fredericksburg Road, San Antonio, Texas 78288               USAA means United Services Automobile Association and its insurance,      banking, investment and other companies. Banks Member FDIC. Investments      provided by USAA Investment Management Company and USAA Financial Advisors      Inc., both registered broker dealers.         67624-1212",
+  "analyst_assessment": {
+    "verdict": "Malicious - Phishing",
+    "confidence": "High",
+    "triage_priority": "Critical",
+    "mitre_attack": [
+      {
+        "id": "T1566",
+        "name": "Phishing",
+        "relationship": "Primary"
+      },
+      {
+        "id": "T1566.002",
+        "name": "Spearphishing Link",
+        "relationship": "Related - targeting not established"
+      }
+    ],
+    "notes": [
+      "Lookalike sender domain observed.",
+      "Sender domain did not match the displayed URL domain.",
+      "Account restriction and urgency language were observed.",
+      "The message requested account verification.",
+      "VirusTotal enrichment returned malicious and suspicious detections.",
+      "The final verdict was assigned through analyst review rather than automatically from the triage score."
+    ]
+  },
+  "limitations": [
+    "The source CSV does not contain complete raw email headers, so SPF, DKIM, DMARC, and Received-header routing cannot be validated for this case.",
+    "The original dataset label is retained for reference but is not treated as the analyst's independent verdict."
+  ]
+}

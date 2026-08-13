@@ -1,0 +1,16 @@
+{
+  "case_id": "CASE-001",
+  "indicator_type": "domain",
+  "indicator": "uusaa[.]com",
+  "source": "VirusTotal API v3",
+  "lookup_type": "existing_domain_report",
+  "last_analysis_stats": {
+    "malicious": 3,
+    "suspicious": 1,
+    "harmless": 52,
+    "undetected": 35
+  },
+  "reputation": 0,
+  "categories": {},
+  "analyst_note": "VirusTotal results reflect available/current reputation data at the time of lookup and do not necessarily describe the domain's historical state when the email was sent in 2015."
+}
