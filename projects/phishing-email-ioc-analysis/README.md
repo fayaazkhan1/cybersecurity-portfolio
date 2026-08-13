@@ -115,6 +115,42 @@ A documented rule-based scoring model assigned points for observable indicators 
 
 The model supports prioritization; the final malicious verdict remained an analyst decision.
 
+## Evidence Highlights
+
+The README shows the strongest investigation evidence below. Environment setup, dataset integrity, and dataset validation screenshots are retained in the [`screenshots/`](screenshots/) folder as supporting technical evidence.
+
+### Case Extraction & Sanitization
+
+The selected phishing record was converted into a sanitized analyst case with masked addresses and defanged indicators before public documentation.
+
+![Case 001 extraction and sanitization](screenshots/04-case-001-extraction.png)
+
+### IOC Structure Analysis
+
+Python parsing identified the sender-domain discrepancy and showed that the sender domain did not match the displayed URL hostname.
+
+![IOC structure analysis](screenshots/05-ioc-structure-analysis.png)
+
+### Threat-Intelligence Enrichment
+
+The suspicious sender domain was enriched through the VirusTotal API. Current reputation data was treated as supporting context rather than as an automatic verdict.
+
+![VirusTotal threat-intelligence enrichment](screenshots/06-threat-intelligence-enrichment.png)
+
+### Explainable Triage Scoring
+
+The lab-developed rule-based model produced a transparent scoring breakdown rather than a black-box result.
+
+![Phishing triage score](screenshots/07-triage-score.png)
+
+### Final Investigation Report
+
+The case concluded with a SOC-style analyst report documenting the verdict, confidence, ATT&CK mapping, response recommendations, and evidence limitations.
+
+![Rendered Case 001 investigation report](screenshots/08-investigation-report.png)
+
+**[Browse the complete evidence set](screenshots/)**
+
 ## Case 001 Report
 
 The full SOC-style investigation includes the executive summary, metadata, sender analysis, social-engineering analysis, IOC structure, threat-intelligence enrichment, triage methodology, MITRE ATT&CK mapping, recommended response actions, and evidence limitations.
@@ -148,8 +184,18 @@ phishing-email-ioc-analysis/
 │   └── scoring-methodology.md
 ├── outputs/                 # Sanitized enrichment and scoring results
 ├── reports/
+│   ├── README.md
 │   ├── case-001-investigation.md
 │   └── case-001-notes.md
+├── screenshots/             # Investigation evidence screenshots
+│   ├── 01-project-environment.png
+│   ├── 02-dataset-integrity.png
+│   ├── 03-dataset-validation.png
+│   ├── 04-case-001-extraction.png
+│   ├── 05-ioc-structure-analysis.png
+│   ├── 06-threat-intelligence-enrichment.png
+│   ├── 07-triage-score.png
+│   └── 08-investigation-report.png
 ├── scripts/                 # Analysis and automation scripts
 ├── .gitignore
 ├── requirements.txt
