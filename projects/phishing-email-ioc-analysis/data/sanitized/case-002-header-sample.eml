@@ -4,6 +4,8 @@ Received: from g193.gc579f28.use4.send.mailgun.net (g193.gc579f28.use4.send.mail
         for <recipient@example.invalid>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
         Sun, 02 Aug 2026 07:04:13 -0700 (PDT)
+Received: by [REDACTED-MAILGUN-INTERNAL-HOST] with HTTP
+        id [REDACTED]; Sun, 02 Aug 2026 14:04:10 GMT
 Received-SPF: pass (google.com: domain of bounce+REDACTED@mg.abdataclassactionmail.com designates 204.220.171.193 as permitted sender) client-ip=204.220.171.193;
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@mg.abdataclassactionmail.com header.s=mailo;
