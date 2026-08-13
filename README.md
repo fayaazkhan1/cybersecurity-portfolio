@@ -26,7 +26,7 @@ Houston, Texas · Open to local, hybrid, and remote opportunities
 
 I am an entry-level cybersecurity professional transitioning from a software engineering background and building practical experience for a career in Security Operations.
 
-My portfolio focuses on hands-on Blue Team work: security monitoring, Windows and Active Directory telemetry, detection engineering, phishing analysis, IOC enrichment, incident investigation, Python automation, and analyst reporting.
+My portfolio focuses on hands-on Blue Team work: security monitoring, Windows and Active Directory telemetry, detection engineering, phishing and suspicious-email analysis, IOC enrichment, email authentication, incident investigation, Python automation, and analyst reporting.
 
 I hold the **Google Cybersecurity Professional Certificate** and am preparing for **CompTIA Security+**.
 
@@ -37,7 +37,7 @@ I hold the **Google Cybersecurity Professional Certificate** and am preparing fo
 | Project | What I Did | Key Evidence |
 |---|---|---|
 | [Active Directory Password Spray Detection & Investigation Lab](projects/active-directory-wazuh-detection-lab/) | Built an isolated AD lab, collected Windows authentication telemetry in Wazuh, created a custom threshold rule, generated controlled failures, and investigated the resulting activity | [Detection rule](projects/active-directory-wazuh-detection-lab/detections/password-spray-rule.xml) · [Investigation report](projects/active-directory-wazuh-detection-lab/reports/password-spray-investigation.md) |
-| [Phishing Email Investigation & IOC Enrichment](projects/phishing-email-ioc-analysis/) | Analyzed a phishing research sample, sanitized evidence, parsed sender/URL relationships, enriched a suspicious domain with VirusTotal, built an explainable triage score, and wrote a SOC-style case report | [Case 001 report](projects/phishing-email-ioc-analysis/reports/case-001-investigation.md) · [Automation](projects/phishing-email-ioc-analysis/scripts/) |
+| [Phishing Email Investigation & IOC Enrichment](projects/phishing-email-ioc-analysis/) | Completed two contrasting email investigations: escalated a malicious phishing sample, then cleared a suspicious-looking Spam message after SPF/DKIM/DMARC, routing, and domain validation | [Case 001](projects/phishing-email-ioc-analysis/reports/case-001-investigation.md) · [Case 002](projects/phishing-email-ioc-analysis/reports/case-002-investigation.md) · [Evidence](projects/phishing-email-ioc-analysis/screenshots/readme.md) |
 | [SOC Labs & Investigations](soc-labs/) | Additional security-operations exercises and technical write-ups | [Explore labs](soc-labs/) |
 
 [View the full project index](projects/)
@@ -64,24 +64,34 @@ I hold the **Google Cybersecurity Professional Certificate** and am preparing fo
 
 ---
 
-## Project 2 — Phishing Email Investigation & IOC Enrichment
+## Project 2 — Phishing & Suspicious-Email Investigation
 
-**Focus:** phishing analysis · IOC extraction · threat intelligence · Python automation · analyst reporting
+**Focus:** phishing analysis · full email headers · IOC enrichment · threat intelligence · SPF/DKIM/DMARC · Python automation · analyst reporting
 
-### Case 001 Highlights
+### Case 001 — Malicious Phishing
 
 - Selected and sanitized a phishing research sample for safe public analysis
 - Identified a lookalike sender domain: `uusaa[.]com`
 - Compared sender infrastructure with the displayed `usaa[.]com` URL hostname
-- Parsed URLs and checked for hidden HTML `href` destinations
-- Queried VirusTotal API v3 for an existing domain report
-- Observed 3 malicious and 1 suspicious detections at the time of lookup
-- Built a documented, explainable 100-point phishing triage heuristic
-- Assigned a final analyst verdict of **Malicious — Phishing** with **High confidence**
+- Parsed URLs and checked for hidden HTML-link destinations
+- Enriched the suspicious sender domain through VirusTotal API v3
+- Built a documented, explainable phishing triage heuristic
+- Assigned **Malicious — Phishing** with **High confidence**
 - Mapped the investigation to MITRE ATT&CK `T1566 — Phishing`
-- Documented response actions and evidence limitations
 
-**[View the project](projects/phishing-email-ioc-analysis/)** · **[Read Case 001](projects/phishing-email-ioc-analysis/reports/case-001-investigation.md)**
+### Case 002 — Full Header / False-Positive Investigation
+
+- Investigated a suspicious-looking settlement notification delivered to Spam
+- Parsed `From`, `Reply-To`, `Return-Path`, `Sender`, `Message-ID`, authentication, and `Received:` headers
+- Confirmed aligned SPF and DKIM plus DMARC pass
+- Reconstructed the Mailgun-to-Google delivery route
+- Compared sender, Reply-To, Return-Path, and visible-site domains
+- Used independent context validation before making the analyst decision
+- Assigned **Likely Legitimate Bulk Notification — Phishing Not Supported** with **High confidence**
+
+The two cases intentionally demonstrate both **true-positive escalation** and **false-positive reduction**.
+
+**[View the project](projects/phishing-email-ioc-analysis/)** · **[Case 001 report](projects/phishing-email-ioc-analysis/reports/case-001-investigation.md)** · **[Case 002 report](projects/phishing-email-ioc-analysis/reports/case-002-investigation.md)**
 
 ---
 
@@ -93,7 +103,9 @@ I hold the **Google Cybersecurity Professional Certificate** and am preparing fo
 - Windows Security event analysis
 - Authentication-event investigation
 - Detection-rule development and threshold validation
-- Phishing email analysis
+- Phishing and suspicious-email analysis
+- SPF, DKIM, and DMARC interpretation
+- Email-header and mail-route analysis
 - IOC extraction, defanging, and enrichment
 - Threat-intelligence interpretation
 - Incident documentation
