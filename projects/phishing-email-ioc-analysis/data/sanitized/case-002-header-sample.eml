@@ -1,0 +1,38 @@
+Delivered-To: recipient@example.invalid
+Received: from g193.gc579f28.use4.send.mailgun.net (g193.gc579f28.use4.send.mailgun.net. [204.220.171.193])
+        by mx.google.com with UTF8SMTPS
+        for <recipient@example.invalid>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 02 Aug 2026 07:04:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounce+REDACTED@mg.abdataclassactionmail.com designates 204.220.171.193 as permitted sender) client-ip=204.220.171.193;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@mg.abdataclassactionmail.com header.s=mailo;
+       dkim=pass header.i=@mailgun.org header.s=mg;
+       spf=pass smtp.mailfrom=bounce+REDACTED@mg.abdataclassactionmail.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=mg.abdataclassactionmail.com
+Return-Path: <bounce+REDACTED@mg.abdataclassactionmail.com>
+Sender: help@mg.abdataclassactionmail.com
+Date: Sun, 02 Aug 2026 14:04:10 +0000
+Subject: Google Assistant Privacy Litigation Settlement
+From: Google Assistant Class Action Administrator <help@mg.abdataclassactionmail.com>
+Reply-To: info@googleassistantprivacylitigation.com
+To: recipient@example.invalid
+Message-Id: <REDACTED@mg.abdataclassactionmail.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+
+[Sanitized portfolio artifact]
+
+This message presented itself as a court-directed Google Assistant Privacy
+Litigation settlement notice and instructed eligible recipients to file a
+claim by August 27, 2026.
+
+Visible destination referenced in the message:
+hxxps://www[.]GoogleAssistantPrivacyLitigation[.]com
+
+Personalized claim identifiers, unsubscribe tokens, recipient address,
+tracking URLs, MIME tracking metadata, and message-specific identifiers
+were removed before publication.
+
+This artifact preserves only the header fields and message context required
+for defensive email-header analysis.
