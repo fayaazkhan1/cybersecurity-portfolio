@@ -1,0 +1,65 @@
+{
+  "case_id": "CASE-002",
+  "verdict": "Likely Legitimate Bulk Notification - Phishing Not Supported",
+  "confidence": "High",
+  "mailbox_classification": "Spam",
+  "authentication": {
+    "spf": "pass",
+    "spf_aligned": true,
+    "dkim": [
+      {
+        "domain": "mg.abdataclassactionmail.com",
+        "result": "pass",
+        "aligned": true
+      },
+      {
+        "domain": "mailgun.org",
+        "result": "pass",
+        "aligned": false,
+        "context": "delivery-provider signature"
+      }
+    ],
+    "dmarc": "pass"
+  },
+  "identity_relationships": {
+    "from_domain": "mg.abdataclassactionmail.com",
+    "return_path_domain": "mg.abdataclassactionmail.com",
+    "sender_domain": "mg.abdataclassactionmail.com",
+    "reply_to_domain": "googleassistantprivacylitigation.com",
+    "visible_site_domain": "googleassistantprivacylitigation.com",
+    "from_return_path_match": true,
+    "from_sender_match": true,
+    "reply_to_visible_site_match": true
+  },
+  "routing": {
+    "provider": "Mailgun",
+    "observed_sending_ip": "204.220.171.193",
+    "destination_provider": "Google",
+    "transport": "UTF8SMTPS",
+    "tls_version": "TLS1_2",
+    "cipher": "ECDHE-ECDSA-AES128-GCM-SHA256"
+  },
+  "external_validation": {
+    "official_site_context_confirmed": true,
+    "reply_to_domain_consistent_with_official_site": true,
+    "claim_deadline_context_consistent": true,
+    "claims_administrator": "A.B. Data, Ltd.",
+    "notes_file": "docs/case-002-external-validation.md"
+  },
+  "analyst_reasoning": [
+    "Mailbox spam placement was treated as an investigation trigger, not a verdict.",
+    "SPF passed and aligned with the visible From domain.",
+    "At least one DKIM signature passed and aligned with the visible From domain.",
+    "DMARC passed.",
+    "The Received chain was consistent with Mailgun delivery to Google.",
+    "From, Sender, and Return-Path domains were internally consistent.",
+    "The Reply-To domain matched the visible settlement website domain.",
+    "Independent official-source validation supported the settlement context.",
+    "No observed evidence supported sender spoofing or phishing classification."
+  ],
+  "limitations": [
+    "The public artifact is sanitized and omits personalized identifiers and tracking tokens.",
+    "Passing authentication does not independently prove that message content is trustworthy.",
+    "External website consistency is supporting evidence rather than cryptographic proof of business ownership relationships."
+  ]
+}
