@@ -1,252 +1,283 @@
 # Phishing Email Investigation & IOC Enrichment
 
-![Status](https://img.shields.io/badge/Status-Case_001_Complete-2ea44f)
-![Focus](https://img.shields.io/badge/Focus-SOC_Investigation-1f6feb)
+![Status](https://img.shields.io/badge/Status-2_Cases_Complete-2ea44f)
+![Focus](https://img.shields.io/badge/Focus-SOC_Email_Investigation-1f6feb)
 ![Python](https://img.shields.io/badge/Python-Automation-3776AB?logo=python&logoColor=white)
+![Email Auth](https://img.shields.io/badge/Email_Auth-SPF_%7C_DKIM_%7C_DMARC-6f42c1)
 ![MITRE ATT&CK](https://img.shields.io/badge/MITRE_ATT%26CK-T1566-red)
 
 ## Overview
 
-This project demonstrates an end-to-end phishing investigation workflow using a public research dataset, Python automation, IOC analysis, VirusTotal enrichment, transparent triage scoring, and SOC-style reporting.
+This project demonstrates evidence-driven email investigation through **two contrasting SOC cases**.
 
-The goal was not simply to label a message as phishing. The workflow separates **source data**, **automated processing**, **analyst observations**, **threat-intelligence context**, and the **final analyst verdict**.
+- **Case 001:** a malicious phishing sample was escalated after IOC analysis, threat-intelligence enrichment, explainable triage, and analyst review.
+- **Case 002:** a suspicious-looking message delivered to Spam was cleared as likely legitimate after full-header analysis, SPF/DKIM/DMARC validation, mail-route reconstruction, domain comparison, and independent context validation.
 
-### Case 001 result
+The goal is to show analyst judgment rather than simply label every suspicious message as malicious.
 
-- **Verdict:** Malicious — Phishing
-- **Confidence:** High
-- **Triage priority:** Critical under the lab-developed scoring model
-- **Primary MITRE ATT&CK mapping:** `T1566 — Phishing`
-- **Suspicious sender domain:** `uusaa[.]com`
-- **Displayed URL host:** `usaa[.]com`
-- **VirusTotal context:** 3 malicious and 1 suspicious detections at the time of lookup
+## Investigation Outcomes
 
-> The triage score is a lab-developed prioritization heuristic, not an industry-standard severity score.
+| Case | Investigation Focus | Final Outcome | Confidence |
+|---|---|---|---|
+| **001** | Phishing content, sender/URL analysis, IOC enrichment, automated triage | **Malicious — Phishing** | High |
+| **002** | Full headers, SPF/DKIM/DMARC, routing, sender identity, domain validation | **Likely Legitimate Bulk Notification — Phishing Not Supported** | High |
 
-## Why This Project Matters
+**Reports:** [Case 001](reports/case-001-investigation.md) · [Case 002](reports/case-002-investigation.md) · [Report index](reports/README.md)
 
-Phishing investigations require more than spotting suspicious wording. A SOC analyst should be able to preserve evidence, identify indicators, compare sender and destination infrastructure, enrich IOCs, document limitations, and communicate a defensible conclusion.
+---
 
-This project demonstrates that process from intake through reporting.
+## Case 001 — Malicious Phishing
 
-## Investigation Workflow
+### What was investigated
+
+A phishing research sample presented itself as USAA communication and requested account verification.
+
+### Key findings
+
+- Sender domain: `uusaa[.]com`
+- Displayed URL host: `usaa[.]com`
+- Lookalike / typosquatted sender-domain characteristic
+- Account-restriction and urgency language
+- Account-verification request
+- VirusTotal context at time of analysis: **3 malicious**, **1 suspicious** detections
+- Lab-developed triage score: **100/100**
+- Final verdict: **Malicious — Phishing**
+- Confidence: **High**
+- MITRE ATT&CK: `T1566 — Phishing`
+
+> The triage score is a portfolio-lab prioritization heuristic, not an industry-standard severity score. The final verdict remained an analyst decision.
+
+### Case 001 workflow
 
 ```text
-Public research dataset
-        ↓
-Integrity verification
-        ↓
-Dataset inspection and validation
-        ↓
-Case selection
-        ↓
-Sanitization and IOC extraction
-        ↓
-URL and sender-domain analysis
-        ↓
-HTML link inspection
-        ↓
+Research dataset
+      ↓
+Integrity + structure validation
+      ↓
+Case selection and sanitization
+      ↓
+IOC extraction and URL parsing
+      ↓
+Sender / destination comparison
+      ↓
 VirusTotal enrichment
-        ↓
+      ↓
 Explainable triage scoring
-        ↓
+      ↓
 Analyst review
-        ↓
-Final verdict and SOC report
+      ↓
+Malicious phishing verdict
 ```
 
-## Key Findings
+### Selected evidence
 
-### 1. Sender-domain discrepancy
+#### Threat-intelligence enrichment
 
-The message presented itself as USAA communication but used the sender domain:
+![Case 001 VirusTotal enrichment](screenshots/06-threat-intelligence-enrichment.png)
+
+#### Explainable triage
+
+![Case 001 triage score](screenshots/07-triage-score.png)
+
+**[Read the full Case 001 report](reports/case-001-investigation.md)** · **[Browse Case 001 evidence](screenshots/)**
+
+---
+
+## Case 002 — Full Email Header Investigation
+
+### What was investigated
+
+A real-world settlement notification landed in a Spam folder and initially warranted review because it used settlement/payment language, third-party sending infrastructure, tracked links, and a Reply-To domain different from the visible From domain.
+
+Instead of treating the Spam label as a verdict, the case examined the full technical delivery evidence.
+
+### Key findings
+
+- SPF: **PASS + aligned**
+- DKIM: **PASS**, including an aligned organizational signature
+- Additional Mailgun DKIM signature: **PASS**, not aligned to visible From
+- DMARC: **PASS**
+- From domain matched Return-Path and Sender domains
+- Reply-To domain matched the visible settlement website domain
+- Received-chain reconstruction showed **Mailgun → Google** delivery
+- Observed sending IP: `204.220.171.193`
+- Google-facing delivery used TLS-protected SMTP
+- Independent validation supported the claims-administrator / settlement-domain relationship
+- Final verdict: **Likely Legitimate Bulk Notification — Phishing Not Supported**
+- Confidence: **High**
+
+### Case 002 workflow
 
 ```text
-uusaa[.]com
+Suspicious-looking Spam message
+      ↓
+Sanitized full-header artifact
+      ↓
+From / Reply-To / Return-Path analysis
+      ↓
+SPF / DKIM / DMARC alignment
+      ↓
+Received-chain reconstruction
+      ↓
+Domain-consistency analysis
+      ↓
+Independent context validation
+      ↓
+Analyst review
+      ↓
+Likely legitimate bulk notification
 ```
 
-The additional `u` is consistent with a potential lookalike or typosquatting technique.
+### Selected evidence
 
-### 2. Sender and displayed URL did not match
+#### Authentication alignment
 
-The displayed URL normalized to:
+![Case 002 authentication alignment](screenshots/10-case-002-authentication-alignment.png)
+
+#### Final investigation outcome
+
+![Case 002 investigation report](screenshots/13-case-002-investigation-report.png)
+
+**[Read the full Case 002 report](reports/case-002-investigation.md)** · **[View structured assessment](outputs/case-002-final-assessment.json)** · **[Review external validation notes](docs/case-002-external-validation.md)**
+
+---
+
+## Why the Two Cases Matter Together
+
+The value of the project is the contrast between outcomes.
 
 ```text
-usaa[.]com
+CASE 001 — TRUE POSITIVE
+Suspicious indicators
+      ↓
+IOC + threat-intelligence evidence
+      ↓
+Escalate as malicious phishing
+
+CASE 002 — FALSE-POSITIVE REDUCTION
+Suspicious presentation / Spam placement
+      ↓
+Authentication + routing + identity validation
+      ↓
+Clear as likely legitimate
 ```
 
-while the sender domain was:
+A SOC analyst should be able to **escalate real threats and reduce false positives**. These cases demonstrate both decisions using documented evidence.
 
-```text
-uusaa[.]com
-```
-
-This mismatch increased suspicion but was treated as one indicator among several rather than proof on its own.
-
-### 3. Social-engineering indicators
-
-The message used:
-
-- Account-restriction language
-- A 24-hour deadline
-- An account-verification request
-- Financial-services impersonation
-- Trust and authority language
-
-### 4. Threat-intelligence enrichment
-
-The sender domain was queried through the VirusTotal API for an existing domain report. At the time of analysis, the response included:
-
-| Classification | Engines |
-|---|---:|
-| Malicious | 3 |
-| Suspicious | 1 |
-| Harmless | 52 |
-| Undetected | 35 |
-
-Because the email dates to 2015, the current reputation result is documented as **supporting context**, not definitive evidence of the domain's historical state.
-
-### 5. Explainable triage model
-
-A documented rule-based scoring model assigned points for observable indicators such as a lookalike sender domain, urgency, domain mismatch, verification language, and VirusTotal detections.
-
-**Case 001 score:** `100/100`  
-**Triage priority:** `Critical`
-
-The model supports prioritization; the final malicious verdict remained an analyst decision.
-
-## Evidence Highlights
-
-The README shows the strongest investigation evidence below. Environment setup, dataset integrity, and dataset validation screenshots are retained in the [`screenshots/`](screenshots/) folder as supporting technical evidence.
-
-### Case Extraction & Sanitization
-
-The selected phishing record was converted into a sanitized analyst case with masked addresses and defanged indicators before public documentation.
-
-![Case 001 extraction and sanitization](screenshots/04-case-001-extraction.png)
-
-### IOC Structure Analysis
-
-Python parsing identified the sender-domain discrepancy and showed that the sender domain did not match the displayed URL hostname.
-
-![IOC structure analysis](screenshots/05-ioc-structure-analysis.png)
-
-### Threat-Intelligence Enrichment
-
-The suspicious sender domain was enriched through the VirusTotal API. Current reputation data was treated as supporting context rather than as an automatic verdict.
-
-![VirusTotal threat-intelligence enrichment](screenshots/06-threat-intelligence-enrichment.png)
-
-### Explainable Triage Scoring
-
-The lab-developed rule-based model produced a transparent scoring breakdown rather than a black-box result.
-
-![Phishing triage score](screenshots/07-triage-score.png)
-
-### Final Investigation Report
-
-The case concluded with a SOC-style analyst report documenting the verdict, confidence, ATT&CK mapping, response recommendations, and evidence limitations.
-
-![Rendered Case 001 investigation report](screenshots/08-investigation-report.png)
-
-**[Browse the complete evidence set](screenshots/)**
-
-## Case 001 Report
-
-The full SOC-style investigation includes the executive summary, metadata, sender analysis, social-engineering analysis, IOC structure, threat-intelligence enrichment, triage methodology, MITRE ATT&CK mapping, recommended response actions, and evidence limitations.
-
-**[Read the full Case 001 investigation report](reports/case-001-investigation.md)**
-
-Supporting analyst notes are also available in [`reports/case-001-notes.md`](reports/case-001-notes.md).
+---
 
 ## Automation Developed
+
+### Case 001
 
 | Script | Purpose |
 |---|---|
 | [`inspect_dataset.py`](scripts/inspect_dataset.py) | Validate dataset structure and record counts |
-| [`diagnose_dataset.py`](scripts/diagnose_dataset.py) | Troubleshoot selection assumptions and dataset characteristics |
-| [`select_case.py`](scripts/select_case.py) | Identify useful phishing samples for investigation |
-| [`create_case.py`](scripts/create_case.py) | Create a sanitized structured case artifact |
-| [`review_case.py`](scripts/review_case.py) | Present sanitized case evidence for analyst review |
-| [`analyze_links.py`](scripts/analyze_links.py) | Compare URL occurrences and HTML `href` destinations |
-| [`analyze_iocs.py`](scripts/analyze_iocs.py) | Parse URL structure and compare sender/URL domains |
-| [`threat_enrichment.py`](scripts/threat_enrichment.py) | Query VirusTotal API v3 for existing domain reputation data |
-| [`risk_scoring.py`](scripts/risk_scoring.py) | Calculate an explainable phishing triage score |
-| [`finalize_case.py`](scripts/finalize_case.py) | Record the analyst's final verdict in structured JSON |
+| [`diagnose_dataset.py`](scripts/diagnose_dataset.py) | Troubleshoot dataset and case-selection assumptions |
+| [`select_case.py`](scripts/select_case.py) | Identify useful phishing samples |
+| [`create_case.py`](scripts/create_case.py) | Produce a sanitized structured case |
+| [`review_case.py`](scripts/review_case.py) | Present sanitized evidence for analyst review |
+| [`analyze_links.py`](scripts/analyze_links.py) | Inspect URL occurrences and HTML-link structure |
+| [`analyze_iocs.py`](scripts/analyze_iocs.py) | Parse IOCs and compare sender / URL domains |
+| [`threat_enrichment.py`](scripts/threat_enrichment.py) | Enrich the sender domain with VirusTotal API v3 |
+| [`risk_scoring.py`](scripts/risk_scoring.py) | Calculate an explainable triage score |
+| [`finalize_case.py`](scripts/finalize_case.py) | Record the analyst verdict in structured JSON |
+
+### Case 002
+
+| Script | Purpose |
+|---|---|
+| [`parse_email_headers.py`](scripts/parse_email_headers.py) | Parse identity, authentication, and Received headers |
+| [`analyze_authentication.py`](scripts/analyze_authentication.py) | Explain SPF, DKIM, and DMARC alignment |
+| [`analyze_mail_route.py`](scripts/analyze_mail_route.py) | Reconstruct the delivery path chronologically |
+| [`analyze_content_domains.py`](scripts/analyze_content_domains.py) | Compare From, Reply-To, Return-Path, Sender, and visible content domains |
+| [`finalize_case_002.py`](scripts/finalize_case_002.py) | Produce the structured final analyst assessment |
+
+---
 
 ## Repository Structure
 
 ```text
 phishing-email-ioc-analysis/
 ├── data/
-│   └── sanitized/           # Public-safe structured case artifact
+│   └── sanitized/
+│       ├── case-001.json
+│       └── case-002-header-sample.eml
 ├── docs/
-│   └── scoring-methodology.md
-├── outputs/                 # Sanitized enrichment and scoring results
+│   ├── scoring-methodology.md
+│   └── case-002-external-validation.md
+├── outputs/
+│   ├── case-001-triage-score.json
+│   ├── case-001-virustotal-domain.json
+│   └── case-002-final-assessment.json
 ├── reports/
 │   ├── README.md
 │   ├── case-001-investigation.md
-│   └── case-001-notes.md
-├── screenshots/             # Investigation evidence screenshots
-│   ├── 01-project-environment.png
-│   ├── 02-dataset-integrity.png
-│   ├── 03-dataset-validation.png
-│   ├── 04-case-001-extraction.png
-│   ├── 05-ioc-structure-analysis.png
-│   ├── 06-threat-intelligence-enrichment.png
-│   ├── 07-triage-score.png
-│   └── 08-investigation-report.png
-├── scripts/                 # Analysis and automation scripts
+│   ├── case-001-notes.md
+│   └── case-002-investigation.md
+├── screenshots/
+│   ├── 01–08  Case 001 evidence
+│   └── 09–13  Case 002 evidence
+├── scripts/
 ├── .gitignore
 ├── requirements.txt
 └── README.md
 ```
 
-The raw dataset, `.env`, API key, and Python virtual environment are intentionally excluded from Git.
+Raw source data, personalized email identifiers, API secrets, and the Python virtual environment are intentionally excluded from public Git history.
+
+---
 
 ## Evidence Limitations
 
-Case 001 was derived from a CSV research dataset rather than the complete original `.eml` file. The following evidence was therefore unavailable:
+### Case 001
 
-- Full `Received:` header chain
-- SPF result
-- DKIM result
-- DMARC result
-- Original MIME structure
-- Recipient endpoint telemetry
-- Proxy/browser evidence of link interaction
-- Evidence of credential submission or account compromise
+The source was a research CSV rather than the complete original `.eml`, so full routing headers, SPF, DKIM, DMARC, and original MIME structure were unavailable.
 
-These gaps are documented rather than inferred.
+### Case 002
+
+The public artifact is intentionally sanitized. Personalized identifiers, tracking tokens, and message-specific values that were unnecessary for defensive header analysis were removed.
+
+Passing email authentication is **supporting evidence**, not proof that message content or a business request is trustworthy. That is why Case 002 combines authentication with routing, identity relationships, and independent context validation.
+
+---
 
 ## Skills Demonstrated
 
-- Phishing email analysis
-- IOC extraction and defanging
-- URL parsing and deduplication
-- Lookalike-domain analysis
-- Threat-intelligence enrichment
+- Phishing and suspicious-email analysis
+- IOC extraction, defanging, parsing, and enrichment
+- Threat-intelligence interpretation
+- SPF, DKIM, and DMARC analysis
+- Email-authentication alignment
+- Full-header parsing
+- `Received:` chain reconstruction
+- Sender / Reply-To / Return-Path analysis
+- Domain-consistency analysis
+- False-positive reduction
+- Python security automation
+- Regular expressions and JSON processing
 - VirusTotal API integration
-- Python scripting
-- Regular expressions
-- JSON processing
-- Security data sanitization
-- Explainable rule-based triage
 - MITRE ATT&CK mapping
-- SOC investigation documentation
-- Incident-response recommendations
-- Evidence limitation analysis
+- SOC-style investigation reporting
+- Evidence sanitization and limitation analysis
 
-## Current Status
+---
 
-**Case 001 is complete.** Planned expansion includes a full-header `.eml` investigation to demonstrate SPF, DKIM, DMARC, routing-header analysis, and a separate attachment/hash-focused case.
+## Evidence & Reports
+
+- **[Complete screenshot evidence index](screenshots/readme.md)**
+- **[Investigation report index](reports/README.md)**
+- **[Case 001 final report](reports/case-001-investigation.md)**
+- **[Case 002 final report](reports/case-002-investigation.md)**
+- **[Case 002 structured analyst assessment](outputs/case-002-final-assessment.json)**
 
 ## Safe-Handling Notes
 
-- Live indicators are defanged in public documentation.
-- The VirusTotal API key is loaded from a local `.env` file and is not committed.
-- Raw research data is excluded from the repository.
-- Threat-intelligence results are treated as context, not automatic verdicts.
+- Public indicators are defanged where appropriate.
+- VirusTotal credentials are loaded locally and are not committed.
+- Raw research data is excluded from Git.
+- The real-world Case 002 artifact was sanitized before publication.
+- Threat-intelligence, mailbox labels, and authentication results are treated as evidence inputs rather than automatic verdicts.
 
 ## Disclaimer
 
