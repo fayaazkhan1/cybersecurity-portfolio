@@ -1,0 +1,14 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "PrivateLabReadAccess",
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::<ACCOUNT_ID_REDACTED>:user/cloudsec-lab-user"
+      },
+      "Action": "s3:GetObject",
+      "Resource": "arn:aws:s3:::fayaaz-cloudsec-lab-657333/*"
+    }
+  ]
+}
