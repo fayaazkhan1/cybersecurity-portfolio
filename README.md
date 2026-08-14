@@ -26,7 +26,7 @@ Houston, Texas · Open to local, hybrid, and remote opportunities
 
 I am an entry-level cybersecurity professional transitioning from a software engineering background and building practical experience for a career in Security Operations.
 
-My portfolio focuses on hands-on Blue Team work: security monitoring, Windows and Active Directory telemetry, detection engineering, phishing and suspicious-email analysis, IOC enrichment, email authentication, incident investigation, Python automation, and analyst reporting.
+My portfolio focuses on hands-on Blue Team and cloud-security work: security monitoring, Windows and Active Directory telemetry, detection engineering, phishing and suspicious-email analysis, IOC enrichment, email authentication, AWS IAM and S3 security, cloud misconfiguration assessment, Python automation, and analyst reporting.
 
 I hold the **Google Cybersecurity Professional Certificate** and am preparing for **CompTIA Security+**.
 
@@ -38,6 +38,7 @@ I hold the **Google Cybersecurity Professional Certificate** and am preparing fo
 |---|---|---|
 | [Active Directory Password Spray Detection & Investigation Lab](projects/active-directory-wazuh-detection-lab/) | Built an isolated AD lab, collected Windows authentication telemetry in Wazuh, created a custom threshold rule, generated controlled failures, and investigated the resulting activity | [Detection rule](projects/active-directory-wazuh-detection-lab/detections/password-spray-rule.xml) · [Investigation report](projects/active-directory-wazuh-detection-lab/reports/password-spray-investigation.md) |
 | [Phishing Email Investigation & IOC Enrichment](projects/phishing-email-ioc-analysis/) | Completed two contrasting email investigations: escalated a malicious phishing sample, then cleared a suspicious-looking Spam message after SPF/DKIM/DMARC, routing, and domain validation | [Case 001](projects/phishing-email-ioc-analysis/reports/case-001-investigation.md) · [Case 002](projects/phishing-email-ioc-analysis/reports/case-002-investigation.md) · [Evidence](projects/phishing-email-ioc-analysis/screenshots/readme.md) |
+| [AWS Cloud Security Misconfiguration Assessment & Remediation](projects/aws-cloud-security-assessment/) | Assessed IAM and S3 security in a dedicated AWS lab, validated excessive/public access with IAM Access Analyzer, hardened storage controls, applied least privilege, and compared Prowler before/after results | [Assessment report](projects/aws-cloud-security-assessment/reports/cloud-security-assessment.md) · [Policies](projects/aws-cloud-security-assessment/policies/) · [Evidence](projects/aws-cloud-security-assessment/screenshots/) |
 | [SOC Labs & Investigations](soc-labs/) | Additional security-operations exercises and technical write-ups | [Explore labs](soc-labs/) |
 
 [View the full project index](projects/)
@@ -95,6 +96,27 @@ The two cases intentionally demonstrate both **true-positive escalation** and **
 
 ---
 
+## Project 3 — AWS Cloud Security Misconfiguration Assessment
+
+**Focus:** AWS · IAM least privilege · S3 security · IAM Access Analyzer · Prowler · remediation validation
+
+### Highlights
+
+- Built a dedicated AWS lab focused on IAM and Amazon S3 security controls
+- Deliberately assigned `s3:*` on `Resource: *` to a controlled IAM identity and validated destructive access with IAM Access Analyzer
+- Reduced the identity to `s3:ListBucket` and `s3:GetObject` against one lab bucket and validated that destructive actions were no longer granted
+- Evaluated a proposed S3 policy using `Principal: *` without deploying it to the live bucket
+- Replaced the wildcard principal with one explicit IAM identity and validated that the policy no longer granted public access
+- Enabled all four S3 Block Public Access settings and bucket versioning
+- Ran Prowler 5.37.1 before and after remediation against IAM and S3
+- Improved the broader scan from **32 passing / 25 failing** to **33 passing / 24 failing**, with `s3_bucket_object_versioning` resolved
+- Documented limitations so the targeted Access Analyzer validation is not confused with broader Prowler account posture
+- Removed the disposable IAM user and S3 lab bucket after evidence collection
+
+**[View the project](projects/aws-cloud-security-assessment/)** · **[Read the assessment report](projects/aws-cloud-security-assessment/reports/cloud-security-assessment.md)** · **[Browse evidence](projects/aws-cloud-security-assessment/screenshots/)**
+
+---
+
 ## Technical Skills Demonstrated
 
 ### Security Operations
@@ -112,9 +134,24 @@ The two cases intentionally demonstrate both **true-positive escalation** and **
 - MITRE ATT&CK mapping
 - False-positive and evidence-limit analysis
 
+### Cloud Security
+
+- AWS IAM permission analysis
+- Least-privilege policy design
+- Amazon S3 access-control hardening
+- S3 Block Public Access
+- S3 versioning and recovery controls
+- IAM Access Analyzer policy validation
+- Prowler cloud-security assessment
+- Cloud misconfiguration remediation and validation
+
 ### Systems & Tools
 
 - Wazuh
+- AWS CLI
+- AWS IAM Access Analyzer
+- Amazon S3
+- Prowler
 - Windows Server
 - Active Directory Domain Services
 - DNS
@@ -133,6 +170,7 @@ The two cases intentionally demonstrate both **true-positive escalation** and **
 - Regular expressions
 - JSON processing
 - API integration
+- Security-report sanitization
 
 ---
 
@@ -156,7 +194,8 @@ Currently preparing for the Security+ exam after completing a full Security+ tra
 cybersecurity-portfolio/
 ├── projects/
 │   ├── active-directory-wazuh-detection-lab/
-│   └── phishing-email-ioc-analysis/
+│   ├── phishing-email-ioc-analysis/
+│   └── aws-cloud-security-assessment/
 ├── soc-labs/
 ├── google-cert/
 ├── resume/
@@ -173,6 +212,7 @@ cybersecurity-portfolio/
 - Cybersecurity Support Analyst
 - Junior Incident Response Analyst
 - Information Security Analyst
+- Junior Cloud Security Analyst
 
 **Location:** Houston, Texas  
 **Work preference:** Local, hybrid, or remote  
