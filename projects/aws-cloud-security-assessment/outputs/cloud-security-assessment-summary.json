@@ -1,0 +1,74 @@
+{
+  "project": "AWS Cloud Security Misconfiguration Assessment & Remediation",
+  "provider": "AWS",
+  "scope": [
+    "IAM",
+    "Amazon S3"
+  ],
+  "tools": [
+    "AWS CLI",
+    "AWS IAM Access Analyzer",
+    "Prowler 5.37.1"
+  ],
+  "findings": [
+    {
+      "id": "CS-001",
+      "title": "Over-Permissioned IAM Identity",
+      "severity": "High",
+      "initial_state": "An IAM user policy granted s3:* against Resource *.",
+      "risk": "The identity could perform unnecessary and destructive S3 actions beyond its intended read-only requirement.",
+      "remediation": "Replaced wildcard S3 privileges with s3:ListBucket and s3:GetObject scoped to one lab bucket.",
+      "validation": "IAM Access Analyzer check-access-not-granted changed from FAIL to PASS for s3:DeleteBucket, s3:PutBucketPolicy, and s3:DeleteObject.",
+      "status": "Remediated"
+    },
+    {
+      "id": "CS-002",
+      "title": "Proposed Public S3 Resource Policy",
+      "severity": "High",
+      "initial_state": "A simulated S3 resource policy used Principal * with s3:GetObject.",
+      "risk": "If deployed, the policy could expose bucket objects to public access.",
+      "remediation": "Replaced the wildcard principal with one explicit IAM identity and retained S3 Block Public Access protections.",
+      "validation": "IAM Access Analyzer check-no-public-access changed from FAIL to PASS.",
+      "status": "Remediated in policy simulation"
+    },
+    {
+      "id": "CS-003",
+      "title": "S3 Versioning Disabled",
+      "severity": "Medium",
+      "initial_state": "The lab bucket did not have object versioning enabled.",
+      "risk": "Object overwrites or deletions would have reduced recovery options.",
+      "remediation": "Enabled S3 bucket versioning.",
+      "validation": "AWS CLI returned Enabled and the post-remediation Prowler scan no longer reported s3_bucket_object_versioning as failed.",
+      "status": "Remediated"
+    }
+  ],
+  "prowler_comparison": {
+    "baseline": {
+      "passed": 32,
+      "failed": 25,
+      "critical_failed": 1,
+      "high_failed": 3,
+      "medium_failed": 12,
+      "low_failed": 9,
+      "iam_failed": 15,
+      "s3_failed": 10
+    },
+    "post_remediation": {
+      "passed": 33,
+      "failed": 24,
+      "critical_failed": 1,
+      "high_failed": 3,
+      "medium_failed": 11,
+      "low_failed": 9,
+      "iam_failed": 15,
+      "s3_failed": 9
+    },
+    "resolved_check": "s3_bucket_object_versioning"
+  },
+  "limitations": [
+    "The intentionally public S3 bucket policy was evaluated but never deployed.",
+    "Prowler evaluated broader IAM and S3 account posture beyond the deliberately created lab findings.",
+    "The IAM remediation was validated directly with IAM Access Analyzer; the aggregate Prowler IAM failure count did not change.",
+    "Raw Prowler reports are excluded from the public repository because they contain account-specific metadata."
+  ]
+}
