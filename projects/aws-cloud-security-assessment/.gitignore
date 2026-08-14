@@ -1,0 +1,14 @@
+# Raw scanner output may contain AWS account IDs, emails, ARNs, and resource metadata
+prowler-output/
+*.html
+
+# Credentials / secrets
+.env
+*.pem
+*.key
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
