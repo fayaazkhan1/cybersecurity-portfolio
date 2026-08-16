@@ -45,7 +45,7 @@ I passed the **CompTIA Security+ (SY0-701)** exam in August 2026 and hold the **
 
 ---
 
-## Project 1 — Active Directory Password Spray Detection
+## Project 1 - Active Directory Password Spray Detection
 
 **Focus:** SIEM monitoring · Windows authentication · detection engineering · alert investigation
 
@@ -65,11 +65,11 @@ I passed the **CompTIA Security+ (SY0-701)** exam in August 2026 and hold the **
 
 ---
 
-## Project 2 — Phishing & Suspicious-Email Investigation
+## Project 2 - Phishing & Suspicious-Email Investigation
 
 **Focus:** phishing analysis · full email headers · IOC enrichment · threat intelligence · SPF/DKIM/DMARC · Python automation · analyst reporting
 
-### Case 001 — Malicious Phishing
+### Case 001 - Malicious Phishing
 
 - Selected and sanitized a phishing research sample for safe public analysis
 - Identified a lookalike sender domain: `uusaa[.]com`
@@ -77,10 +77,10 @@ I passed the **CompTIA Security+ (SY0-701)** exam in August 2026 and hold the **
 - Parsed URLs and checked for hidden HTML-link destinations
 - Enriched the suspicious sender domain through VirusTotal API v3
 - Built a documented, explainable phishing triage heuristic
-- Assigned **Malicious — Phishing** with **High confidence**
-- Mapped the investigation to MITRE ATT&CK `T1566 — Phishing`
+- Assigned **Malicious - Phishing** with **High confidence**
+- Mapped the investigation to MITRE ATT&CK `T1566 - Phishing`
 
-### Case 002 — Full Header / False-Positive Investigation
+### Case 002 - Full Header / False-Positive Investigation
 
 - Investigated a suspicious-looking settlement notification delivered to Spam
 - Parsed `From`, `Reply-To`, `Return-Path`, `Sender`, `Message-ID`, authentication, and `Received:` headers
@@ -88,7 +88,7 @@ I passed the **CompTIA Security+ (SY0-701)** exam in August 2026 and hold the **
 - Reconstructed the Mailgun-to-Google delivery route
 - Compared sender, Reply-To, Return-Path, and visible-site domains
 - Used independent context validation before making the analyst decision
-- Assigned **Likely Legitimate Bulk Notification — Phishing Not Supported** with **High confidence**
+- Assigned **Likely Legitimate Bulk Notification - Phishing Not Supported** with **High confidence**
 
 The two cases intentionally demonstrate both **true-positive escalation** and **false-positive reduction**.
 
@@ -96,7 +96,7 @@ The two cases intentionally demonstrate both **true-positive escalation** and **
 
 ---
 
-## Project 3 — AWS Cloud Security Misconfiguration Assessment
+## Project 3 - AWS Cloud Security Misconfiguration Assessment
 
 **Focus:** AWS · IAM least privilege · S3 security · IAM Access Analyzer · Prowler · remediation validation
 
@@ -178,7 +178,7 @@ The two cases intentionally demonstrate both **true-positive escalation** and **
 
 ### CompTIA Security+ (SY0-701)
 
-**Exam passed — August 2026.** Official CompTIA credential/badge issuance is pending. A verification link will be added once it becomes available.
+**Exam passed - August 2026.** Official CompTIA credential/badge issuance is pending. A verification link will be added once it becomes available.
 
 ### Google Cybersecurity Professional Certificate
 
