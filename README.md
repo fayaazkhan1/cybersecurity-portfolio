@@ -1,6 +1,6 @@
 <div align="center">
 
-# Fayaaz Khan — Cybersecurity Portfolio
+# Fayaaz Khan Cybersecurity Portfolio
 
 ### Entry-Level SOC Analyst | Blue Team | Detection & Investigation
 
