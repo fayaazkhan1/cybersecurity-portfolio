@@ -10,7 +10,7 @@ Houston, Texas · Open to local, hybrid, and remote opportunities
   <a href="mailto:fayaazkhan1@gmail.com">
     <img src="https://img.shields.io/badge/Email-Contact_Me-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Email Fayaaz Khan" />
   </a>
-  <a href="resume/Fayaaz_Yasin_Khan_SOC_Analyst_Resume.pdf">
+  <a href="https://drive.google.com/file/d/1pChebI_sjAZs1X121v99-LiwYlEYlWL_/view?usp=sharing">
     <img src="https://img.shields.io/badge/Resume-View_PDF-D32F2F?style=for-the-badge&logo=adobeacrobatreader&logoColor=white" alt="View resume" />
   </a>
   <a href="projects/">
@@ -217,7 +217,7 @@ cybersecurity-portfolio/
 **Location:** Houston, Texas  
 **Work preference:** Local, hybrid, or remote  
 **Email:** [fayaazkhan1@gmail.com](mailto:fayaazkhan1@gmail.com)  
-**Resume:** [Fayaaz_Yasin_Khan_SOC_Analyst_Resume.pdf](resume/Fayaaz_Yasin_Khan_SOC_Analyst_Resume.pdf)
+**Resume:** [View current SOC Analyst resume](https://drive.google.com/file/d/1pChebI_sjAZs1X121v99-LiwYlEYlWL_/view?usp=sharing)
 
 ---
 
