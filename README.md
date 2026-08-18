@@ -28,7 +28,7 @@ I am an entry-level cybersecurity professional transitioning from a software eng
 
 My portfolio focuses on hands-on Blue Team and cloud-security work: security monitoring, Windows and Active Directory telemetry, detection engineering, phishing and suspicious-email analysis, IOC enrichment, email authentication, AWS IAM and S3 security, cloud misconfiguration assessment, Python automation, and analyst reporting.
 
-I passed the **CompTIA Security+ (SY0-701)** exam in August 2026 and hold the **Google Cybersecurity Professional Certificate**. Official Security+ credential issuance is pending.
+I am **CompTIA Security+ (SY0-701) certified** as of August 2026 and hold the **Google Cybersecurity Professional Certificate**.
 
 ---
 
@@ -178,7 +178,7 @@ The two cases intentionally demonstrate both **true-positive escalation** and **
 
 ### CompTIA Security+ (SY0-701)
 
-**Exam passed - August 2026.** Official CompTIA credential/badge issuance is pending. A verification link will be added once it becomes available.
+**Certified - August 2026.** Official CompTIA certificate and digital badge issued. Certification valid through August 2029.
 
 ### Google Cybersecurity Professional Certificate
 
