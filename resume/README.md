@@ -4,10 +4,12 @@ I am an entry-level cybersecurity professional pursuing opportunities in securit
 
 ## View Resume
 
-[![View Resume](https://img.shields.io/badge/View_Resume-PDF-D32F2F?style=for-the-badge&logo=adobeacrobatreader&logoColor=white)](Fayaaz_Yasin_Khan_SOC_Analyst_Resume.pdf)
+[![View Resume](https://img.shields.io/badge/View_Resume-PDF-D32F2F?style=for-the-badge&logo=adobeacrobatreader&logoColor=white)](https://drive.google.com/file/d/1pChebI_sjAZs1X121v99-LiwYlEYlWL_/view?usp=sharing)
 
-**Direct link:**  
-[Fayaaz Khan — SOC Analyst Resume](Fayaaz_Yasin_Khan_SOC_Analyst_Resume.pdf)
+**Current SOC Analyst resume:**  
+[Fayaaz Khan — SOC Analyst Resume](https://drive.google.com/file/d/1pChebI_sjAZs1X121v99-LiwYlEYlWL_/view?usp=sharing)
+
+The recruiter-facing resume is maintained in Google Drive so this repository always points to the current version.
 
 ## Areas of Experience
 
@@ -19,6 +21,10 @@ I am an entry-level cybersecurity professional pursuing opportunities in securit
 - MITRE ATT&CK mapping
 - Incident documentation
 - Bash and PowerShell fundamentals
+
+## Certification
+
+- CompTIA Security+ (SY0-701) — Certified, Aug 2026
 
 ## Featured Security Project
 
