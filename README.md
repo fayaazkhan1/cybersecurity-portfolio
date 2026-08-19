@@ -180,6 +180,8 @@ The two cases intentionally demonstrate both **true-positive escalation** and **
 
 **Certified - August 2026.** Official CompTIA certificate and digital badge issued. Certification valid through August 2029.
 
+[Verify credential](http://verify.CompTIA.org) · Verification code: `e92653fdfa4149aaad3dae3cef4471f9`
+
 ### Google Cybersecurity Professional Certificate
 
 Completed training in security foundations, network security, Linux, SQL, threats and vulnerabilities, detection and response, SIEM concepts, and Python security automation.
