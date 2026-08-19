@@ -1,4 +1,4 @@
-# Fayaaz Khan — Resume
+# Fayaaz Khan - Resume
 
 I am an entry-level cybersecurity professional pursuing opportunities in security operations, threat detection, and incident investigation.
 
@@ -7,7 +7,7 @@ I am an entry-level cybersecurity professional pursuing opportunities in securit
 [![View Resume](https://img.shields.io/badge/View_Resume-PDF-D32F2F?style=for-the-badge&logo=adobeacrobatreader&logoColor=white)](https://drive.google.com/file/d/1pChebI_sjAZs1X121v99-LiwYlEYlWL_/view?usp=sharing)
 
 **Current SOC Analyst resume:**  
-[Fayaaz Khan — SOC Analyst Resume](https://drive.google.com/file/d/1pChebI_sjAZs1X121v99-LiwYlEYlWL_/view?usp=sharing)
+[Fayaaz Khan - SOC Analyst Resume](https://drive.google.com/file/d/1pChebI_sjAZs1X121v99-LiwYlEYlWL_/view?usp=sharing)
 
 The recruiter-facing resume is maintained in Google Drive so this repository always points to the current version.
 
@@ -24,7 +24,8 @@ The recruiter-facing resume is maintained in Google Drive so this repository alw
 
 ## Certification
 
-- CompTIA Security+ (SY0-701) — Certified, Aug 2026
+- CompTIA Security+ (SY0-701) - Certified Aug 2026 | Valid through Aug 2029
+- Verification: [verify.CompTIA.org](http://verify.CompTIA.org) | Code: `e92653fdfa4149aaad3dae3cef4471f9`
 
 ## Featured Security Project
 
